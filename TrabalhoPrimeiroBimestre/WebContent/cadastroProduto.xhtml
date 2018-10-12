@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:head>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" type="text/css" href="resources/css/estilo.css"/>
+<title>Cadastro de Produtos </title>
+</h:head>
+<h:body>
+<ul>
+  <li><a href="index.html">Principal</a></li>
+  <li><a class="active" href="cadastroProduto.html">Cadastro de Produto</a></li>
+  <li><a href="listarProdutos.html">Listar Produtos</a></li>
+  <li><a href="sobre.html">Sobre</a></li>
+</ul>
+<br/>
+<br/>
+<div>
+
+  <h3 class="cabecalho">Cadastro de Produtos</h3>
+  
+<br />
+		<h:form action="/cadastroProduto.html">
+ 
+			<label for="fname">Nome</label>
+			<h:inputText type="text" id="nome" name="nome" required="true"
+				placeholder="Entre com o nome do Produto"
+				value="#{produtoMB.nome}" />
+				
+			<label for="fname">Valor</label>
+			<h:inputText type="text" id="valor" name="valor"
+				placeholder="Entre com o valor do produto"
+				value="#{produtoMB.valor}" />
+				
+			<label for="fname">Quantidade</label>
+			<h:inputText type="text" id="quantidade" name="quantidade"
+				placeholder="Entre com a quantidade do produto"
+				value="#{produtoMB.quantidade}" />
+				
+			<label for="fname">Descricao</label>
+			<h:inputText type="text" id="descricao" name="descricao"
+				placeholder="Entre com a descricao do produto"
+				value="#{produtoMB.descricao}" />
+	
+			<h:commandButton value="Adicionar" action="#{produtoMB.Salvar}">
+			<!--     <f:ajax render="@form" resetValues="true"/>  -->
+			</h:commandButton>
+			
+			<h:commandButton type="reset" value="Limpar Campos">
+			   <f:ajax render="@form" resetValues="true"/>
+			</h:commandButton>
+
+		</h:form>
+	</div>
+
+</h:body>
+</html>

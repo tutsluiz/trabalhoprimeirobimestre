@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:head>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" type="text/css" href="resources/css/estilo.css"/>
+<title>Cadastro de Produtos </title>
+</h:head>
+<h:body>
+<ul>
+  <li><a href="index.html">Principal</a></li>
+  <li><a href="cadastroProduto.html">Cadastro de Produto</a></li>
+  <li><a class="active" href="listarProdutos.html">Listar Produtos</a></li>
+  <li><a href="sobre.html">Sobre</a></li>
+   
+</ul>
+<br />
+<br />
+	<div>	
+		<h:dataTable id="customers" var="obj" value="#{produtoMB.listarTodos}"
+			border="1" width="100%">
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ID" />
+				</f:facet>
+				<h:outputText value="#{obj.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{obj.nome}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Quantidade" />
+				</f:facet>
+				<h:outputText value="#{obj.quantidade}" />
+			</h:column>
+
+			<!-- Coluna de edição para excluir e editar  -->
+			<h:column >
+				<f:facet name="header">
+					<h:outputText value="Editar Qtd." />
+				</f:facet>
+				
+				<h:form>
+					<h:inputText type="text" id="quantidadeNova" name="QuantidadeNova"
+						size="2" maxlength="4" placeholder="Quantidade"
+						value="#{produtoMB.quantidade}"/>
+
+					<!-- Botão de Editar Produto da tabela -->
+
+					<h:commandLink action="#{produtoMB.EditarQuantidade}">
+						<f:setPropertyActionListener value="#{obj.id}"
+							target="#{produtoMB.id}" />
+						<h:graphicImage value="/resources/img/editar.png" title="Editar"
+							class="imagemLink" />
+					</h:commandLink>
+				</h:form>
+
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Descrição" />
+				</f:facet>
+				<h:outputText value="#{obj.descricao}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor" />
+				</f:facet>
+				<h:outputText value="#{obj.valor}" />
+			</h:column>
+
+
+			<!-- Coluna de edição para excluir e editar  -->
+				
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir Prod." />
+				</f:facet> 
+				
+				<!-- Botão de Excluir Produto da tabela -->
+				<h:form>
+					<h:commandLink action="#{produtoMB.ExcluirProduto}">
+						<f:setPropertyActionListener value="#{obj.id}"
+							target="#{produtoMB.id}" />
+						<h:graphicImage value="/resources/img/excluir.png" title="Excluir"
+							styleClass="imagemLink" />
+					</h:commandLink>
+				</h:form>	
+             </h:column>
+
+		</h:dataTable>
+	</div>
+
+</h:body>
+</html>
